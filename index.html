@@ -58,6 +58,13 @@
             .sosmed-link {
                 @apply flex items-center gap-2 hover:text-emas transition-colors;
             }
+            /* Status Jadwal */
+            .jadwal-selesai {
+                @apply text-abuTerang line-through opacity-60;
+            }
+            .jadwal-aktif {
+                @apply text-putihLunak font-medium;
+            }
         }
     </style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -328,13 +335,13 @@
                     <div class="mt-6 pt-6 border-t border-abuSedang/50">
                         <h3 class="text-lg font-semibold mb-4 text-putihLunak">Ikuti Kami</h3>
                         <div class="flex flex-col gap-3">
-                            <a href="https://instagram.com/forkoskabsemarang" target="_blank" rel="noopener noreferrer" class="https://www.instagram.com/forkoskabsemarang?exln=aHljMzR5anAybTZs">
+                            <a href="https://instagram.com/forkoskabsemarang" target="_blank" rel="noopener noreferrer" class="sosmed-link text-perak">
                                 <i class="fa fa-instagram text-xl text-emas"></i>
-                                <span>Instagram Forkos</span>
+                                <span>@forkoskabsemarang</span>
                             </a>
-                            <a href="https://tiktok.com/@forkoskabsemarang" target="_blank" rel="noopener noreferrer" class="https://www.tiktok.com/@forkoskabsemarang?_r=1&_t=ZS-9AcRA6EkQvl">
+                            <a href="https://tiktok.com/@forkoskabsemarang" target="_blank" rel="noopener noreferrer" class="sosmed-link text-perak">
                                 <i class="fa fa-music text-xl text-emas"></i>
-                                <span>TikTok Forkos</span>
+                                <span>@forkoskabsemarang</span>
                             </a>
                         </div>
                     </div>
@@ -362,28 +369,28 @@
             <p class="mb-8 max-w-2xl text-lg text-perak">Dokumentasi kegiatan, momen kebersamaan, dan karya nyata FORKOS Kabupaten Semarang.</p>
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 <div class="aspect-square rounded-xl overflow-hidden group border border-abuSedang/40 hover:border-emas/40 transition-all duration-300">
-                    <img src="13.jpeg" alt="Kegiatan 1" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <img src="13.jpeg" alt="Kegiatan" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                 </div>
                 <div class="aspect-square rounded-xl overflow-hidden group border border-abuSedang/40 hover:border-emas/40 transition-all duration-300">
-                    <img src="14.jpeg" alt="Kegiatan 2" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <img src="14.jpeg" alt="Kegiatan" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                 </div>
                 <div class="aspect-square rounded-xl overflow-hidden group border border-abuSedang/40 hover:border-emas/40 transition-all duration-300">
-                    <img src="15.jpeg" alt="Kegiatan 3" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <img src="15.jpeg" alt="Kegiatan" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                 </div>
                 <div class="aspect-square rounded-xl overflow-hidden group border border-abuSedang/40 hover:border-emas/40 transition-all duration-300">
-                    <img src="10.jpeg" alt="Kegiatan 4" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <img src="10.jpeg" alt="Kegiatan" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                 </div>
                 <div class="aspect-square rounded-xl overflow-hidden group border border-abuSedang/40 hover:border-emas/40 transition-all duration-300">
-                    <img src="6.png" alt="Kegiatan 5" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <img src="6.png" alt="Kegiatan" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                 </div>
                 <div class="aspect-square rounded-xl overflow-hidden group border border-abuSedang/40 hover:border-emas/40 transition-all duration-300">
-                    <img src="7.png" alt="Kegiatan 6" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <img src="7.png" alt="Kegiatan" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                 </div>
                 <div class="aspect-square rounded-xl overflow-hidden group border border-abuSedang/40 hover:border-emas/40 transition-all duration-300">
-                    <img src="8.png" alt="Kegiatan 7" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <img src="8.png" alt="Kegiatan" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                 </div>
                 <div class="aspect-square rounded-xl overflow-hidden group border border-abuSedang/40 hover:border-emas/40 transition-all duration-300">
-                    <img src="1.png" alt="Kegiatan 8" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <img src="1.png" alt="Kegiatan" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                 </div>
                 <div class="aspect-square rounded-xl overflow-hidden group border border-abuSedang/40 hover:border-emas/40 transition-all duration-300">
                     <img src="2.png" alt="Kegiatan" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
@@ -417,6 +424,11 @@
     <section id="jadwal" class="section-padding bg-hitamDalam/50 relative">
         <div class="container mx-auto px-4 md:px-6 relative z-10">
             <h2 class="section-title">Update Jadwal Kegiatan</h2>
+            <p class="mb-6 text-sm text-abuTerang">
+                <i class="fa fa-info-circle mr-1"></i>
+                <span class="jadwal-selesai"> — Sudah Terlaksana</span>
+                <span class="jadwal-aktif ml-4"> — Akan Datang / Sedang Berlangsung</span>
+            </p>
             <div class="overflow-x-auto">
                 <table class="w-full bg-abuGelap/60 backdrop-blur-sm rounded-xl shadow-xl border border-abuSedang/50">
                     <thead>
@@ -427,13 +439,23 @@
                             <th class="p-4 text-left text-emas font-semibold rounded-tr-xl">Keterangan</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr class="border-b border-abuSedang/40 hover:bg-abuSedang/20 transition-colors">
+                    <tbody id="jadwal-tbody">
+                        <!-- Baris akan diproses otomatis oleh JavaScript -->
+                        <tr data-tanggal="2026-10-15" class="border-b border-abuSedang/40 hover:bg-abuSedang/20 transition-colors">
                             <td class="p-4 font-semibold">15 Okt 2026</td>
                             <td class="p-4">Rapat Konsolidasi Program Kerja Forkos 2026-2027</td>
-                            <td class="p-4 text-perak">Rumah Dinas Wakil Bupati</td>
-                            <td class="p-4 text-abuTerang">Pembahasan program kerja tahun 2026-2027</td>
+                            <td class="p-4">Rumah Dinas Wakil Bupati</td>
+                            <td class="p-4">Pembahasan program kerja tahun 2026-2027</td>
                         </tr>
+                        <!-- Tambahkan baris baru di sini -->
+                        <!-- Contoh:
+                        <tr data-tanggal="2026-11-20" class="border-b border-abuSedang/40 hover:bg-abuSedang/20 transition-colors">
+                            <td class="p-4 font-semibold">20 Nov 2026</td>
+                            <td class="p-4">Nama Kegiatan</td>
+                            <td class="p-4">Tempat</td>
+                            <td class="p-4">Keterangan</td>
+                        </tr>
+                        -->
                     </tbody>
                 </table>
             </div>
@@ -469,12 +491,12 @@
                         </li>
                         <li><i class="fa fa-envelope mr-2 text-emas"></i> forkoskabsemarang@gmail.com</li>
                         <li class="mt-2">
-                            <a href="https://instagram.com/forkoskabsemarang" target="_blank" class="https://www.instagram.com/forkoskabsemarang?exln=aHljMzR5anAybTZs">
+                            <a href="https://instagram.com/forkoskabsemarang" target="_blank" class="sosmed-link">
                                 <i class="fa fa-instagram mr-2 text-emas"></i> Instagram
                             </a>
                         </li>
                         <li>
-                            <a href="https://tiktok.com/@forkoskabsemarang" target="_blank" class="https://www.tiktok.com/@forkoskabsemarang?_r=1&_t=ZS-9AcRA6EkQvl">
+                            <a href="https://tiktok.com/@forkoskabsemarang" target="_blank" class="sosmed-link">
                                 <i class="fa fa-music mr-2 text-emas"></i> TikTok
                             </a>
                         </li>
@@ -489,6 +511,7 @@
 
     <!-- Skrip -->
     <script>
+        // Navbar scroll
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
@@ -499,6 +522,8 @@
                 navbar.classList.add('py-3');
             }
         });
+
+        // Menu mobile
         const menuBtn = document.getElementById('menuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
         menuBtn.addEventListener('click', () => {
@@ -511,11 +536,34 @@
                 menuBtn.innerHTML = '<i class="fa fa-bars"></i>';
             });
         });
+
+        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', e => {
                 e.preventDefault();
                 const el = document.querySelector(anchor.getAttribute('href'));
                 if (el) window.scrollTo({ top: el.offsetTop - 80, behavior: 'smooth' });
+            });
+        });
+
+        // Logika Penandaan Jadwal Otomatis
+        document.addEventListener('DOMContentLoaded', () => {
+            const hariIni = new Date();
+            hariIni.setHours(0, 0, 0, 0);
+
+            const barisJadwal = document.querySelectorAll('#jadwal-tbody tr[data-tanggal]');
+            
+            barisJadwal.forEach(baris => {
+                const tglKegiatan = new Date(baris.getAttribute('data-tanggal'));
+                tglKegiatan.setHours(0, 0, 0, 0);
+
+                const selesai = tglKegiatan < hariIni;
+                const kelas = selesai ? 'jadwal-selesai' : 'jadwal-aktif';
+
+                // Terapkan ke semua sel dalam baris
+                baris.querySelectorAll('td').forEach(td => {
+                    td.classList.add(kelas);
+                });
             });
         });
     </script>
