@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORKOS - Forum Komunikasi Serasi Kabupaten Semarang</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        hitamPremium: '#080808',
+                        hitamDalam: '#121212',
+                        abuGelap: '#1F1F1F',
+                        abuSedang: '#2E2E2E',
+                        abuTerang: '#787878',
+                        perak: '#C8C8C8',
+                        putihLunak: '#F0F0F0',
+                        emas: '#C9A66B',
+                        emasTerang: '#E6C18A',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        display: ['"Playfair Display"', 'serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto { content-visibility: auto; }
+            .nav-link { @apply px-4 py-2 hover:text-emas transition-colors duration-300 font-medium; }
+            .section-padding { @apply py-20 md:py-28; }
+            .section-title {
+                @apply text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-putihLunak mb-1 relative inline-block;
+            }
+            .section-title::after {
+                content: ''; position: absolute; bottom: -10px; left: 0; width: 70px; height: 3px;
+                background: linear-gradient(90deg, #C9A66B, #E6C18A); border-radius: 2px;
+            }
+            .org-box {
+                @apply bg-abuGelap/80 backdrop-blur-sm p-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-abuSedang/60 hover:border-emas/50 flex flex-col items-center text-center;
+            }
+            .org-box-logo {
+                @apply w-14 h-14 object-contain mb-2 rounded-md bg-hitamPremium/50 p-1.5;
+            }
+            .ornamen-lingkaran {
+                position: absolute; border-radius: 50%; background: radial-gradient(circle, rgba(201,166,107,0.08), transparent 70%);
+                pointer-events: none;
+            }
+            .pattern-dots {
+                background-image: radial-gradient(rgba(201,166,107,0.06) 1px, transparent 1px);
+                background-size: 24px 24px;
+            }
+            .sosmed-link {
+                @apply flex items-center gap-2 hover:text-emas transition-colors;
+            }
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body class="font-sans bg-hitamPremium text-putihLunak relative overflow-x-hidden">
+    <!-- Ornamen Latar Belakang Global -->
+    <div class="fixed inset-0 pattern-dots opacity-40 pointer-events-none z-0"></div>
+    <div class="ornamen-lingkaran w-[400px] h-[400px] top-10 -right-20 z-0"></div>
+    <div class="ornamen-lingkaran w-[500px] h-[500px] top-1/3 -left-24 z-0"></div>
+    <div class="ornamen-lingkaran w-[350px] h-[350px] bottom-10 right-10 z-0"></div>
+
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed w-full z-50 py-3 transition-all duration-300">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="flex justify-between items-center">
+                <a href="#beranda" class="flex items-center gap-3">
+                    <img src="logoutama.png" alt="Logo FORKOS" class="w-10 h-10 object-contain">
+                    <span class="text-xl font-bold tracking-wide">
+                        FORKOS <span class="text-emas">Kabupaten Semarang</span>
+                    </span>
+                </a>
+                <div class="hidden md:flex space-x-1 text-perak">
+                    <a href="#beranda" class="nav-link">Beranda</a>
+                    <a href="#tentang" class="nav-link">Tentang</a>
+                    <a href="#organisasi" class="nav-link">Organisasi Tergabung</a>
+                    <a href="#lokasi" class="nav-link">Lokasi</a>
+                    <a href="#galeri" class="nav-link">Galeri Kami</a>
+                    <a href="#jadwal" class="nav-link">Jadwal Kegiatan</a>
+                </div>
+                <button id="menuBtn" class="md:hidden text-putihLunak text-2xl">
+                    <i class="fa fa-bars"></i>
+                </button>
+            </div>
+            <div id="mobileMenu" class="md:hidden hidden mt-4 bg-abuGelap/95 backdrop-blur-md rounded-xl shadow-xl p-5 text-putihLunak border border-abuSedang/50">
+                <div class="flex flex-col space-y-3">
+                    <a href="#beranda" class="py-2 hover:text-emas transition-colors">Beranda</a>
+                    <a href="#tentang" class="py-2 hover:text-emas transition-colors">Tentang</a>
+                    <a href="#organisasi" class="py-2 hover:text-emas transition-colors">Organisasi Tergabung</a>
+                    <a href="#lokasi" class="py-2 hover:text-emas transition-colors">Lokasi</a>
+                    <a href="#galeri" class="py-2 hover:text-emas transition-colors">Galeri Kami</a>
+                    <a href="#jadwal" class="py-2 hover:text-emas transition-colors">Jadwal Kegiatan</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Bagian Beranda -->
+    <section id="beranda" class="relative min-h-screen flex items-center pt-20">
+        <div class="absolute inset-0 bg-gradient-to-br from-hitamPremium via-hitamDalam to-hitamPremium/95 z-0"></div>
+        <div class="container mx-auto px-4 md:px-6 py-20 relative z-10">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="flex justify-center md:justify-start relative">
+                    <div class="absolute w-72 h-72 md:w-96 md:h-96 rounded-full bg-emas/5 blur-3xl"></div>
+                    <img src="logoutama.png" alt="Logo FORKOS Kabupaten Semarang" class="w-[260px] md:w-[340px] relative z-10 drop-shadow-[0_0_30px_rgba(201,166,107,0.15)]">
+                </div>
+                <div class="text-center md:text-left">
+                    <p class="text-emas/80 tracking-[0.2em] uppercase text-sm mb-4">Forum Komunikasi Serasi</p>
+                    <h1 class="text-[clamp(2rem,5vw,3.8rem)] font-bold leading-tight mb-6 font-display">
+                        Bersatu Membangun,<br>
+                        <span class="text-emas">Serasi Berkarya</span>
+                    </h1>
+                    <p class="text-lg md:text-xl mb-8 text-perak max-w-xl mx-auto md:mx-0 leading-relaxed">
+                        Wadah persatuan, silaturahmi, dan kolaborasi antarorganisasi untuk kemajuan bersama Kabupaten Semarang.
+                    </p>
+                    <a href="#tentang" class="inline-block bg-gradient-to-r from-emas to-emasTerang text-hitamPremium font-bold px-10 py-3.5 rounded-full transition-all duration-300 shadow-lg shadow-emas/15 hover:shadow-emas/25 hover:scale-[1.03]">
+                        Kenali Kami Lebih Lanjut <i class="fa fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bagian Tentang -->
+    <section id="tentang" class="section-padding bg-hitamDalam/50 relative">
+        <div class="container mx-auto px-4 md:px-6 relative z-10">
+            <h2 class="section-title">Tentang FORKOS</h2>
+            <p class="text-perak mb-10 max-w-2xl text-lg">Mengenal lebih dekat jati diri, tujuan, dan semangat yang menggerakkan kami.</p>
+            <div class="grid md:grid-cols-2 gap-10 items-start">
+                <div>
+                    <p class="mb-4 text-lg leading-relaxed">
+                        <strong class="text-putihLunak">FORKOS (Forum Komunikasi Serasi)</strong> adalah wadah persatuan dan komunikasi yang menaungi berbagai organisasi di wilayah Kabupaten Semarang. Kami berdiri atas semangat kebersamaan, kerukunan, dan gotong royong.
+                    </p>
+                    <p class="mb-4 text-lg leading-relaxed text-perak">
+                        Tujuan utama kami adalah menjalin keharmonisan antarorganisasi, mempererat tali silaturahmi, serta menyatukan langkah untuk berkontribusi nyata bagi pembangunan dan kesejahteraan masyarakat Kabupaten Semarang.
+                    </p>
+                    <p class="text-lg leading-relaxed text-perak italic">
+                        "Bersatu Membangun, Serasi Berkarya" — menjadi mitra yang andal dalam memajukan daerah dan menciptakan lingkungan yang harmonis serta dinamis.
+                    </p>
+                </div>
+                <div class="bg-abuGelap/60 backdrop-blur-sm p-8 rounded-xl shadow-lg border border-abuSedang/50">
+                    <h3 class="text-xl font-bold mb-6 text-putihLunak font-display">Visi & Misi</h3>
+                    <h4 class="font-semibold text-emas mb-2">Visi</h4>
+                    <p class="mb-6 text-perak">Terwujudnya persatuan yang kokoh dan sinergi antarorganisasi untuk mewujudkan Kabupaten Semarang yang maju, damai, dan sejahtera.</p>
+                    <h4 class="font-semibold text-emas mb-3">Misi</h4>
+                    <ul class="space-y-3 text-perak">
+                        <li class="flex items-start gap-3"><i class="fa fa-check-circle text-emas mt-1"></i><span>Mempererat hubungan silaturahmi antarorganisasi</span></li>
+                        <li class="flex items-start gap-3"><i class="fa fa-check-circle text-emas mt-1"></i><span>Membangun komunikasi yang terbuka dan sehat</span></li>
+                        <li class="flex items-start gap-3"><i class="fa fa-check-circle text-emas mt-1"></i><span>Menyelenggarakan kegiatan yang bermanfaat bagi masyarakat</span></li>
+                        <li class="flex items-start gap-3"><i class="fa fa-check-circle text-emas mt-1"></i><span>Berkolaborasi dalam pembangunan daerah</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bagian Organisasi Tergabung -->
+    <section id="organisasi" class="section-padding relative">
+        <div class="container mx-auto px-4 md:px-6 relative z-10">
+            <h2 class="section-title">Organisasi Tergabung</h2>
+            <p class="mb-10 max-w-2xl text-lg text-perak">Berikut organisasi yang telah bergabung dalam keluarga besar FORKOS Kabupaten Semarang:</p>
+            
+            <!-- Grid Kotak Kecil Logo + Nama -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+                <!-- Kotak 1 -->
+                <div class="org-box">
+                    <img src="linduaji.png" alt="Logo Lindu Aji" class="org-box-logo">
+                    <h3 class="font-semibold text-sm text-putihLunak leading-snug">Lindu Aji</h3>
+                </div>
+                <!-- Kotak 2 -->
+                <div class="org-box">
+                    <img src="psht.png" alt="Logo PSHT" class="org-box-logo">
+                    <h3 class="font-semibold text-sm text-putihLunak leading-snug">PSHT</h3>
+                </div>
+                <!-- Kotak 3 -->
+                <div class="org-box">
+                    <img src="pemudapancasila.png" alt="Logo Pemuda Pancasila" class="org-box-logo">
+                    <h3 class="font-semibold text-sm text-putihLunak leading-snug">Pemuda Pancasila</h3>
+                </div>
+                <!-- Kotak 4 -->
+                <div class="org-box">
+                    <img src="geram.png" alt="Logo GERAM" class="org-box-logo">
+                    <h3 class="font-semibold text-sm text-putihLunak leading-snug">GERAM</h3>
+                </div>
+                <!-- Kotak 5 -->
+                <div class="org-box">
+                    <img src="sarbuser.png" alt="Logo SAR BUSER" class="org-box-logo">
+                    <h3 class="font-semibold text-sm text-putihLunak leading-snug">SAR BUSER</h3>
+                </div>
+                <!-- Kotak 6 -->
+                <div class="org-box">
+                    <img src="knpi.png" alt="Logo KNPI" class="org-box-logo">
+                    <h3 class="font-semibold text-sm text-putihLunak leading-snug">KNPI</h3>
+                </div>
+                <!-- Kotak 7 -->
+                <div class="org-box">
+                    <img src="lensa.png" alt="Logo LENSA" class="org-box-logo">
+                    <h3 class="font-semibold text-sm text-putihLunak leading-snug">LENSA</h3>
+                </div>
+                <!-- Kotak 8 -->
+                <div class="org-box">
+                    <img src="nyawawali.png" alt="Logo Nyawa Wali" class="org-box-logo">
+                    <h3 class="font-semibold text-sm text-putihLunak leading-snug">Nyawa Wali</h3>
+                </div>
+                <!-- Kotak 9 -->
+                <div class="org-box">
+                    <img src="senkom.png" alt="Logo Senkom Mitra Polri" class="org-box-logo">
+                    <h3 class="font-semibold text-sm text-putihLunak leading-snug">Senkom Mitra Polri</h3>
+                </div>
+                <!-- Kotak 10 -->
+                <div class="org-box">
+                    <img src="bankom.png" alt="Logo BANKOM" class="org-box-logo">
+                    <h3 class="font-semibold text-sm text-putihLunak leading-snug">BANKOM</h3>
+                </div>
+                <!-- Kotak 11 -->
+                <div class="org-box">
+                    <img src="lumutijo.png" alt="Logo Lumut Ijo" class="org-box-logo">
+                    <h3 class="font-semibold text-sm text-putihLunak leading-snug">Lumut Ijo</h3>
+                </div>
+                <!-- Kotak 12 -->
+                <div class="org-box">
+                    <img src="bann.png" alt="Logo BANN" class="org-box-logo">
+                    <h3 class="font-semibold text-sm text-putihLunak leading-snug">BANN</h3>
+                </div>
+                <!-- Kotak 13 -->
+                <div class="org-box">
+                    <img src="rapi.png" alt="Logo RAPI" class="org-box-logo">
+                    <h3 class="font-semibold text-sm text-putihLunak leading-snug">RAPI</h3>
+                </div>
+                <!-- Kotak 14 -->
+                <div class="org-box">
+                    <img src="pbb.png" alt="Logo Pemuda Batak Bersatu" class="org-box-logo">
+                    <h3 class="font-semibold text-sm text-putihLunak leading-snug">Pemuda Batak Bersatu</h3>
+                </div>
+                <!-- Kotak 15 -->
+                <div class="org-box">
+                    <img src="aliansi.png" alt="Logo Aliansi Indonesia" class="org-box-logo">
+                    <h3 class="font-semibold text-sm text-putihLunak leading-snug">Aliansi Indonesia</h3>
+                </div>
+                <!-- Kotak 16 -->
+                <div class="org-box">
+                    <img src="iwapi.png" alt="Logo IWAPI" class="org-box-logo">
+                    <h3 class="font-semibold text-sm text-putihLunak leading-snug">IWAPI</h3>
+                </div>
+                <!-- Kotak 17 -->
+                <div class="org-box">
+                    <img src="emperan.png" alt="Logo EMPERAN" class="org-box-logo">
+                    <h3 class="font-semibold text-sm text-putihLunak leading-snug">EMPERAN</h3>
+                </div>
+                <!-- Kotak 18 -->
+                <div class="org-box">
+                    <img src="ppm.png" alt="Logo Pemuda Panca Marga" class="org-box-logo">
+                    <h3 class="font-semibold text-sm text-putihLunak leading-snug">Pemuda Panca Marga</h3>
+                </div>
+                <!-- Kotak 19 -->
+                <div class="org-box">
+                    <img src="rtb.png" alt="Logo Relawan Tanpa Batas" class="org-box-logo">
+                    <h3 class="font-semibold text-sm text-putihLunak leading-snug">Relawan Tanpa Batas</h3>
+                </div>
+                <!-- Kotak 20 -->
+                <div class="org-box">
+                    <img src="satkom.png" alt="Logo SATKOM" class="org-box-logo">
+                    <h3 class="font-semibold text-sm text-putihLunak leading-snug">SATKOM</h3>
+                </div>
+                <!-- Kotak 21 -->
+                <div class="org-box">
+                    <img src="kam.png" alt="Logo Karya Anak Muda" class="org-box-logo">
+                    <h3 class="font-semibold text-sm text-putihLunak leading-snug">Karya Anak Muda</h3>
+                </div>
+                <!-- Kotak 22 -->
+                <div class="org-box">
+                    <img src="sn.png" alt="Logo Squad Nusantara" class="org-box-logo">
+                    <h3 class="font-semibold text-sm text-putihLunak leading-snug">Squad Nusantara</h3>
+                </div>
+                <!-- Kotak 23 -->
+                <div class="org-box">
+                    <img src="grib.png" alt="Logo GRIB Jaya" class="org-box-logo">
+                    <h3 class="font-semibold text-sm text-putihLunak leading-snug">GRIB Jaya</h3>
+                </div>
+                <!-- Kotak 24 -->
+                <div class="org-box">
+                    <img src="fkppi.png" alt="Logo FKPPI" class="org-box-logo">
+                    <h3 class="font-semibold text-sm text-putihLunak leading-snug">FKPPI</h3>
+                </div>
+                <!-- Kotak 25 -->
+                <div class="org-box">
+                    <img src="234sc.png" alt="Logo 234SC" class="org-box-logo">
+                    <h3 class="font-semibold text-sm text-putihLunak leading-snug">234SC</h3>
+                </div>
+            </div>
+            
+            <p class="mt-8 text-center text-perak italic">dan masih banyak lainnya. Bergabunglah bersama kami!</p>
+        </div>
+    </section>
+
+    <!-- Bagian Lokasi & Hubungi Kami -->
+    <section id="lokasi" class="section-padding bg-hitamDalam/50 relative">
+        <div class="container mx-auto px-4 md:px-6 relative z-10">
+            <h2 class="section-title">Hubungi Kami</h2>
+            <div class="grid md:grid-cols-2 gap-8 items-start">
+                <div>
+                    <p class="mb-4 text-lg text-perak">Kantor Sekretariat FORKOS Kabupaten Semarang beralamat di:</p>
+                    <address class="not-italic mb-6 text-lg">
+                        <strong class="text-putihLunak">FORKOS Kabupaten Semarang</strong><br>
+                        Jl. Brigjen Sudiarto No. 34<br>
+                        Dliwang, Ungaran, Kec. Ungaran Barat, Kabupaten Semarang, Jawa Tengah<br>
+                        Kode Pos: 50511
+                    </address>
+                    <p class="mb-3 text-perak">
+                        <i class="fa fa-map-marker mr-2 text-emas"></i>
+                        <a href="https://maps.app.goo.gl/xr6hEMhwpYesPiHy8" target="_blank" rel="noopener noreferrer" class="text-emas hover:underline">Buka di Google Maps</a>
+                    </p>
+                    <p class="mb-3 text-perak"><i class="fa fa-phone mr-2 text-emas"></i> 089530578323</p>
+                    <p class="mb-3 text-perak"><i class="fa fa-envelope mr-2 text-emas"></i> forkoskabsemarang@gmail.com</p>
+                    
+                    <!-- Media Sosial -->
+                    <div class="mt-6 pt-6 border-t border-abuSedang/50">
+                        <h3 class="text-lg font-semibold mb-4 text-putihLunak">Ikuti Kami</h3>
+                        <div class="flex flex-col gap-3">
+                            <a href="https://instagram.com/forkoskabsemarang" target="_blank" rel="noopener noreferrer" class="https://www.instagram.com/forkoskabsemarang?exln=aHljMzR5anAybTZs">
+                                <i class="fa fa-instagram text-xl text-emas"></i>
+                                <span>Instagram Forkos</span>
+                            </a>
+                            <a href="https://tiktok.com/@forkoskabsemarang" target="_blank" rel="noopener noreferrer" class="https://www.tiktok.com/@forkoskabsemarang?_r=1&_t=ZS-9AcRA6EkQvl">
+                                <i class="fa fa-music text-xl text-emas"></i>
+                                <span>TikTok Forkos</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="rounded-xl overflow-hidden shadow-xl h-[320px] border border-abuSedang/50">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.835731433464!2d110.3333815750739!3d-7.2813506927223!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e78c695c5e5e5e5%3A0x5c5c5c5c5c5c5c5c!2sJl.+Brigjen+Sudiarto+No.34%2C+Dliwang%2C+Ungaran+Bar.%2C+Kabupaten+Semarang%2C+Jawa+Tengah+50511!5e0!3m2!1sid!2sid!4v1729084800000!5m2!1sid!2sid"
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"
+                        class="w-full h-full">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bagian Galeri -->
+    <section id="galeri" class="section-padding relative">
+        <div class="container mx-auto px-4 md:px-6 relative z-10">
+            <h2 class="section-title">Galeri Kami</h2>
+            <p class="mb-8 max-w-2xl text-lg text-perak">Dokumentasi kegiatan, momen kebersamaan, dan karya nyata FORKOS Kabupaten Semarang.</p>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div class="aspect-square rounded-xl overflow-hidden group border border-abuSedang/40 hover:border-emas/40 transition-all duration-300">
+                    <img src="13.jpeg" alt="Kegiatan 1" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                </div>
+                <div class="aspect-square rounded-xl overflow-hidden group border border-abuSedang/40 hover:border-emas/40 transition-all duration-300">
+                    <img src="14.jpeg" alt="Kegiatan 2" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                </div>
+                <div class="aspect-square rounded-xl overflow-hidden group border border-abuSedang/40 hover:border-emas/40 transition-all duration-300">
+                    <img src="15.jpeg" alt="Kegiatan 3" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                </div>
+                <div class="aspect-square rounded-xl overflow-hidden group border border-abuSedang/40 hover:border-emas/40 transition-all duration-300">
+                    <img src="10.jpeg" alt="Kegiatan 4" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                </div>
+                <div class="aspect-square rounded-xl overflow-hidden group border border-abuSedang/40 hover:border-emas/40 transition-all duration-300">
+                    <img src="6.png" alt="Kegiatan 5" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                </div>
+                <div class="aspect-square rounded-xl overflow-hidden group border border-abuSedang/40 hover:border-emas/40 transition-all duration-300">
+                    <img src="7.png" alt="Kegiatan 6" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                </div>
+                <div class="aspect-square rounded-xl overflow-hidden group border border-abuSedang/40 hover:border-emas/40 transition-all duration-300">
+                    <img src="8.png" alt="Kegiatan 7" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                </div>
+                <div class="aspect-square rounded-xl overflow-hidden group border border-abuSedang/40 hover:border-emas/40 transition-all duration-300">
+                    <img src="1.png" alt="Kegiatan 8" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                </div>
+                <div class="aspect-square rounded-xl overflow-hidden group border border-abuSedang/40 hover:border-emas/40 transition-all duration-300">
+                    <img src="2.png" alt="Kegiatan" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                </div>
+                <div class="aspect-square rounded-xl overflow-hidden group border border-abuSedang/40 hover:border-emas/40 transition-all duration-300">
+                    <img src="3.png" alt="Kegiatan" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                </div>
+                <div class="aspect-square rounded-xl overflow-hidden group border border-abuSedang/40 hover:border-emas/40 transition-all duration-300">
+                    <img src="4.png" alt="Kegiatan" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                </div>
+                <div class="aspect-square rounded-xl overflow-hidden group border border-abuSedang/40 hover:border-emas/40 transition-all duration-300">
+                    <img src="5.png" alt="Kegiatan" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                </div>
+                <div class="aspect-square rounded-xl overflow-hidden group border border-abuSedang/40 hover:border-emas/40 transition-all duration-300">
+                    <img src="9.png" alt="Kegiatan" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                </div>
+                <div class="aspect-square rounded-xl overflow-hidden group border border-abuSedang/40 hover:border-emas/40 transition-all duration-300">
+                    <img src="11.jpeg" alt="Kegiatan" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                </div>
+                <div class="aspect-square rounded-xl overflow-hidden group border border-abuSedang/40 hover:border-emas/40 transition-all duration-300">
+                    <img src="12.jpeg" alt="Kegiatan" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bagian Jadwal Kegiatan -->
+    <section id="jadwal" class="section-padding bg-hitamDalam/50 relative">
+        <div class="container mx-auto px-4 md:px-6 relative z-10">
+            <h2 class="section-title">Update Jadwal Kegiatan</h2>
+            <div class="overflow-x-auto">
+                <table class="w-full bg-abuGelap/60 backdrop-blur-sm rounded-xl shadow-xl border border-abuSedang/50">
+                    <thead>
+                        <tr class="border-b border-abuSedang/50">
+                            <th class="p-4 text-left text-emas font-semibold rounded-tl-xl">Tanggal</th>
+                            <th class="p-4 text-left text-emas font-semibold">Nama Kegiatan</th>
+                            <th class="p-4 text-left text-emas font-semibold">Tempat</th>
+                            <th class="p-4 text-left text-emas font-semibold rounded-tr-xl">Keterangan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-abuSedang/40 hover:bg-abuSedang/20 transition-colors">
+                            <td class="p-4 font-semibold">15 Okt 2026</td>
+                            <td class="p-4">Rapat Konsolidasi Program Kerja Forkos 2026-2027</td>
+                            <td class="p-4 text-perak">Rumah Dinas Wakil Bupati</td>
+                            <td class="p-4 text-abuTerang">Pembahasan program kerja tahun 2026-2027</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-hitamDalam/80 border-t border-abuSedang/50 py-10 relative z-10">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="grid md:grid-cols-3 gap-8 items-start">
+                <div class="flex items-center gap-4">
+                    <img src="logoutama.png" alt="Logo FORKOS" class="w-16 h-16 object-contain">
+                    <div>
+                        <h3 class="text-xl font-bold text-putihLunak">FORKOS</h3>
+                        <p class="text-abuTerang text-sm">Forum Komunikasi Serasi<br>Kabupaten Semarang</p>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-3 text-putihLunak">Tautan Cepat</h3>
+                    <ul class="space-y-2 text-perak">
+                        <li><a href="#beranda" class="hover:text-emas transition-colors">Beranda</a></li>
+                        <li><a href="#tentang" class="hover:text-emas transition-colors">Tentang</a></li>
+                        <li><a href="#organisasi" class="hover:text-emas transition-colors">Organisasi Tergabung</a></li>
+                        <li><a href="#galeri" class="hover:text-emas transition-colors">Galeri Kami</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-3 text-putihLunak">Hubungi Kami</h3>
+                    <ul class="space-y-2 text-perak">
+                        <li>
+                            <i class="fa fa-map-marker mr-2 text-emas"></i>
+                            <a href="https://maps.app.goo.gl/xr6hEMhwpYesPiHy8" target="_blank" class="hover:text-emas transition-colors">Buka Google Maps</a>
+                        </li>
+                        <li><i class="fa fa-envelope mr-2 text-emas"></i> forkoskabsemarang@gmail.com</li>
+                        <li class="mt-2">
+                            <a href="https://instagram.com/forkoskabsemarang" target="_blank" class="https://www.instagram.com/forkoskabsemarang?exln=aHljMzR5anAybTZs">
+                                <i class="fa fa-instagram mr-2 text-emas"></i> Instagram
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://tiktok.com/@forkoskabsemarang" target="_blank" class="https://www.tiktok.com/@forkoskabsemarang?_r=1&_t=ZS-9AcRA6EkQvl">
+                                <i class="fa fa-music mr-2 text-emas"></i> TikTok
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-abuSedang/50 mt-8 pt-6 text-center text-abuTerang text-sm">
+                <p>&copy; 2026 FORKOS Kabupaten Semarang — Semua Hak Dilindungi</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Skrip -->
+    <script>
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-hitamPremium/90', 'backdrop-blur-md', 'shadow-lg', 'py-2');
+                navbar.classList.remove('py-3');
+            } else {
+                navbar.classList.remove('bg-hitamPremium/90', 'backdrop-blur-md', 'shadow-lg', 'py-2');
+                navbar.classList.add('py-3');
+            }
+        });
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            menuBtn.innerHTML = mobileMenu.classList.contains('hidden') ? '<i class="fa fa-bars"></i>' : '<i class="fa fa-times"></i>';
+        });
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuBtn.innerHTML = '<i class="fa fa-bars"></i>';
+            });
+        });
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', e => {
+                e.preventDefault();
+                const el = document.querySelector(anchor.getAttribute('href'));
+                if (el) window.scrollTo({ top: el.offsetTop - 80, behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
